@@ -29,12 +29,12 @@
   </head>
 
   <body>
-    <h1>Number guessing game</h1>
+    <h1>Jeu : Le juste Prix !</h1>
 
-    <p>We have selected a random number between 1 and 100. See if you can guess it in 10 turns or fewer. We'll tell you if your guess was too high or too low.</p>
+    <p>J'ai choisi un nombre aléatoire entre 1 et 100. Essaye de le deviner en 10 tours ou moins !</p>
 
     <div class="form">
-      <label for="guessField">Enter a guess: </label>
+      <label for="guessField">Devine le chiffre : </label>
       <input type="number" min="1" max="100" required id="guessField" class="guessField">
       <input type="submit" value="Submit guess" class="guessSubmit">
     </div>
@@ -58,13 +58,13 @@
       function checkGuess() {
         const userGuess = Number(guessField.value);
         if (guessCount === 1) {
-          guesses.textContent = 'Previous guesses: ';
+          guesses.textContent = 'Nombres déjà proposés: ';
         }
 
         guesses.textContent += userGuess + ' ';
 
         if (userGuess === randomNumber) {
-          lastResult.textContent = 'Congratulations! You got it right!';
+          lastResult.textContent = 'Bravo, tu as gagné !!!';
           lastResult.style.backgroundColor = 'green';
           lowOrHi.textContent = '';
           setGameOver();
@@ -73,12 +73,12 @@
           lowOrHi.textContent = '';
           setGameOver();
         } else {
-          lastResult.textContent = 'Wrong!';
+          lastResult.textContent = 'Faux !';
           lastResult.style.backgroundColor = 'red';
           if(userGuess < randomNumber) {
-            lowOrHi.textContent = 'Last guess was too low!' ;
+            lowOrHi.textContent = 'Trop bas !' ;
           } else if(userGuess > randomNumber) {
-            lowOrHi.textContent = 'Last guess was too high!';
+            lowOrHi.textContent = 'Trop haut ! ';
           }
         }
 
@@ -93,7 +93,7 @@
         guessField.disabled = true;
         guessSubmit.disabled = true;
         resetButton = document.createElement('button');
-        resetButton.textContent = 'Start new game';
+        resetButton.textContent = 'Commencer un nouveau jeu';
         document.body.appendChild(resetButton);
         resetButton.addEventListener('click', resetGame);
       }
